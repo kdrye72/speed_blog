@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Entry:</strong>
+  <%= @post.entry %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user_id %>
+</p>
+
+<div class="row">
+	<div class="col-md-6">
+		
+		<%= render 'comments/form', comment: @comment %>
+
+		<% @post.comments.each do |comment| %>
+			<div class="well">
+				<h5><%= comment.user.username %> says...</h5>
+				<p><%= comment.message %></p>
+			</div>
+		<% end %>
+
+	</div>
+</div>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
